@@ -1,0 +1,178 @@
+<!doctype html>
+
+<!-- Mirrored from tosh.blob.codes/help/tips/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 03 Mar 2025 19:26:02 GMT -->
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<title>tips :: tosh</title>
+
+<link href="http://fonts.googleapis.com/css?family=Noto+Sans:400,400italic,700|Source+Code+Pro:400,600" rel="stylesheet" type="text/css">
+<link rel=stylesheet href=../../shared.css>
+<link rel=stylesheet href=../../website.css>
+<link rel=stylesheet href=../../app/codemirror/codemirror-combined.html>
+<link rel=stylesheet href=../scratchblocks2.html>
+
+<style>
+p {
+  line-height: 1.75em;
+}
+li {
+  line-height: 1.75em;
+  margin: 0 0 0.75em;
+}
+code.blocks {
+  border: none;
+  background: none;
+  margin: 0;
+  padding: 0;
+}
+.hide {
+  display: none;
+}
+</style>
+
+<!---------------------------------------------------------------------------->
+
+<body class=guide>
+
+<h1>
+  <a href="../index.html">tosh help <strong>/</strong></a>
+  <strong>tips</strong>
+</h1>
+
+<blockquote>
+<strong>Also read <a href="../guide/index.html">the language guide.</a></strong>
+</blockquote>
+
+<p>Here are some tips on using the editor.
+
+<ul>
+  <li><a href="#files">Opening projects</a>
+  <li><a href="#indent">Indentation</a>
+  <li><a href="#completion">Auto-complete</a>
+  <li><a href="#playing">Playing Projects</a>
+  <li><a href="#renaming-variables">Renaming variables</a>
+  <li><a href="#find-replace">Find/replace</a>
+  <li><a href="#turbo">Turbo mode</a>
+  <li><a href="#shortcuts">Keyboard shortcuts</a>
+  <li><a href="#vim">Vim mode</a>
+  <li><a href="#emacs">Emacs mode</a>
+  <li><a href="#hacked">Hacked blocks</a>
+</ul>
+
+
+<h2 id="files">Opening projects</h2>
+
+<p><strong>Tip:</strong> You can open projects by dragging the file into the browser window.</p>
+
+<p>Make sure your browser is up-to-date, and check you can save before starting work! I <strong>recommend using <a href="http://www.google.com/chrome/">Chrome</a></strong>, although <strong>Firefox</strong> should work too.</p>
+
+<p><strong>Safari warning:</strong> Safari unhelpfully names saved files as <code>Unknown</code>, <code>Unknown-2</code> and so on, so your Mac won&#8217;t recognise them as Scratch files. You have to rename them manually; unfortunately this is a problem with Safari and so there&#8217;s no way I can fix this.</p>
+
+<p><a href="http://tosh.tjvr.org/#product">Buying the <strong>Mac app</strong></a> should fix saving-related issues :-) It also works offline, supports autosave, and can load bigger project files.</p>
+
+<h2 id="indent">Indentation</h2>
+
+<p>Select some tosh code and press <kbd>Tab ⇥</kbd> to auto-indent.</p>
+
+<h2 id="completion">Auto-complete</h2>
+
+<p>Tosh supports "code completion" or "auto-complete":
+
+<ul>
+  <li>As you type, the auto-complete prompt will appear with a list of possible completions.
+  <li>Use the arrow keys <kbd>↑</kbd>/<kbd>↓</kbd> to select a completion.
+  <li>Press <kbd>Tab ⇥</kbd> to accept the completion.
+  <li>Autocomplete will jump to the first input, or to the end of the line if there are no inputs.
+</ul>
+
+<p>You can also press <kbd>Tab ⇥</kbd> to <b>jump between inputs</b>, just like in Scratch!
+
+<h2 id="playing">Playing Projects</h2>
+
+<p>I&#8217;m using <strong><a href="http://phosphorus.github.io/">Phosphorus</a></strong> to play projects.</p>
+
+<p>Phosphorus runs Scratch projects very fast, and integrates into tosh very well.
+Unfortunately, it works slightly differently to how Scratch does.</p>
+
+<p>The following things are <strong>not supported</strong>:</p>
+
+<ul>
+  <li><a href="http://github.com/nathan/phosphorus/issues/2">List watchers</a>
+  <li><a href="http://github.com/nathan/phosphorus/issues/173">Graphic effects</a> other than <code>ghost</code>: that is <code>color</code>, <code>fisheye</code>, <code>whirl</code>, <code>pixelate</code>, <code>mosaic</code>, <code>brightness</code>
+  <li>The <a href="http://github.com/nathan/phosphorus/issues/22">color touching color</code></a> block
+  <li>Video blocks
+  <li>Microphone (loudness)
+</ul>
+
+<h2 id=turbo>Turbo mode</h2>
+
+<p><strong>Shift-click the green flag</strong> for turbo mode. This is the same as both Scratch and Phosphorus.</p>
+
+
+<h2 id="renaming-variables">Renaming variables</h2>
+
+<p>To rename a variable, use find/replace, like in a normal programming language!</p>
+
+<p>Renaming a variable does not automatically update all the places it&#8217;s used,
+like Scratch does, because it wouldn&#8217;t work if you currently had a syntax
+error.</p>
+
+<h2 id="find-replace">Find/replace</h2>
+
+<p><strong>Find</strong>:</p>
+
+<ul>
+  <li><strong>Ctrl-F / Cmd-F</strong> <kbd>⌘F</kbd> to start searching</li>
+  <li><strong>Enter</strong> <kbd>⏎</kbd> to find next</li>
+  <li><strong>Shift-Enter</strong> <kbd>⇧⏎</kbd> to find previous</li>
+</ul>
+
+<p><strong>Replace</strong>:</p>
+
+<ol>
+  <li><strong>Shift-Ctrl-F / Cmd-Option-F</strong> <kbd>⌥⌘F</kbd>, then input what to replace</li>
+  <li><strong>Enter <kbd>⏎</kbd></strong>, then input what to replace it with</li>
+  <li><strong>Enter <kbd>⏎</kbd></strong> again, then click &#8220;All&#8221;</li>
+</ol>
+
+<h2 id=shortcuts>Keyboard shortcuts</h2>
+
+<ol>
+  <li>Press <strong>Ctrl-Return / Cmd-Return</strong> <kbd>⌘⏎</kbd> to compile and run your project.</li>
+  <li>Test out your project!</li>
+  <li>Press <strong>Escape</strong> <kbd>⎋</kbd> to return to the scripts editor, to continue writing your program.</li>
+</ol>
+
+<h2 id=vim>Vim mode</h2>
+
+<p>Yes, tosh supports vim keybindings! Open your browser&#8217;s JavaScript console, and execute the following:</p>
+
+<pre><code>App.settings.keyMap.assign('vim');
+</code></pre>
+
+<p>Now you can use most vim-like keybindings; see <a href="https://codemirror.net/demo/vim.html">the CodeMirror docs</a>.</p>
+
+<p>To change it back, just run:</p>
+
+<pre><code>App.settings.keyMap.assign('default');
+</code></pre>
+
+<p>Remember, when the project is focused you can press <key>Esc</key> to get back to the code editor.</p>
+
+<p><b>For the Mac app</b>, instead run the following commands in Terminal:
+<pre>defaults write org.tjvr.tosh.Tosh toshSettings -dict keyMap vim</pre>
+<p>To change it back:
+<pre>defaults write org.tjvr.tosh.Tosh toshSettings -dict keyMap default</pre>
+
+<h2 id=emacs>Emacs mode</h2>
+
+<p>See <b><a href="#vim">Vim mode</a></b> above, but use <code>emacs</code> instead of <code>vim</code>.
+
+<h2 id=hacked>Hacked blocks</h2>
+
+<p>Some Scratch projects use &#8220;hacked&#8221; blocks: these are special blocks made by
+editing the JSON files by hand, which cannot be made using the normal Scratch editor.</p>
+
+<p>There are currently no plans to support these. Sorry!</p>
+

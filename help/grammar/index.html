@@ -1,0 +1,190 @@
+<!doctype html>
+
+<!-- Mirrored from tosh.blob.codes/help/grammar/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 03 Mar 2025 19:26:04 GMT -->
+<meta charset=utf-8>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+
+<title>grammar :: tosh</title>
+
+<link href="http://fonts.googleapis.com/css?family=Noto+Sans:400,700|Source+Code+Pro:400,600" rel="stylesheet" type="text/css">
+<link rel=stylesheet href=../../website.css>
+
+<style>
+.rule {
+  margin: 0 0 0.5em;
+}
+.rule .left {
+  display: inline-block;
+  position: relative;
+  width: 14em;
+  height: 1.375em;
+  min-width: 6em;
+  vertical-align: top;
+}
+.rule .name {
+  display: block;
+  position: absolute;
+  right: 0;
+  top: 0;
+  min-width: 2.5em;
+}
+.rule .arrow {
+  margin: 0 0.5em;
+}
+
+.rule .name, .rule .referent {
+  font-weight: 700;
+  color: rgba(0, 0, 0, 0.65);
+}
+
+a.referent {
+  background: none;
+}
+
+.rule .literal {
+  font-family: Source Code Pro, monospace;
+  font-weight: 400;
+  letter-spacing: -0.5px;
+}
+
+.rule .referent, .rule .literal {
+  margin-right: 0.5em;
+}
+
+.list {
+  font-size: 0.9em;
+}
+
+@media print {
+  h1 { display: none; }
+  .rule {
+    margin: 0 !important;
+  }
+  body {
+    font-size: 0.5em;
+    -webkit-columns: 2;
+  }
+  h2 {
+    font-size: 1.25em;
+  }
+}
+
+.hide {
+  display: none;
+}
+</style>
+
+<!---------------------------------------------------------------------------->
+
+<body class=guide id=top>
+
+<h1>
+  <a href="../index.html">tosh help <strong>/</strong></a>
+  <strong>grammar</strong>
+</h1>
+
+<p>This is the complete grammar for Tosh in <a href="http://en.wikipedia.org/wiki/Backus–Naur_Form">BNF syntax</a>. It shows you the actual rules which the parser uses.
+
+<p>It's mostly useful for testing and debugging Tosh itself, although it can be useful if you want to get a precise idea of how Tosh's syntax works. You're probably better off <a href="../guide/index.html#syntax">reading the guide</a>, honestly.
+
+<p>The rules for the core grammar were defined by hand. The rest of the blocks are generated from the actual Scratch 2.0 definitions using code.
+
+<ul class=toc>
+</ul>
+
+<div class=hide>
+  <span id="menu"></span>
+  <span id="button-load"></span>
+  <span id="button-save"></span>
+  <span class=player></span>
+</div>
+
+<noscript>
+  <p class=big>Whoops, you disabled Javascript.
+</noscript>
+
+<!---------------------------------------------------------------------------->
+
+<script src=../../util.js></script>
+<script src=../../app/koel/koel.html></script>
+<script src=../../app/codemirror/codemirror-min.html></script>
+<script src=../../../canvg.googlecode.com/svn/trunk/canvg.html></script>
+<script src=../../app/tosh-min.js></script>
+
+<script>
+
+function stringify(symbol) {
+  var value = symbol.toString ? symbol.toString() : symbol;
+  return el('span.literal', (typeof value === 'string') ? value : JSON.stringify(value || symbol));
+}
+
+function renderRule(rule, isFirst) {
+  var r = [
+    el('span.left', isFirst ? [
+      el('span.name', rule.name), 
+    ] : []),
+    el('span.arrow', "→"),
+  ];
+  for (var i=0; i<rule.symbols.length; i++) {
+    var symbol = rule.symbols[i];
+    r.push(" ");
+    r.push((typeof symbol === "string"
+              ? el('a', {class: 'referent', href: '#'+symbol, text: symbol})
+              : stringify(symbol)));
+  }
+  return el('p.rule', r);
+};
+
+
+function renderRuleList(rules) {
+  var names = [];
+  var byName = {};
+  rules.forEach(function(r) {
+    if (names.indexOf(r.name) === -1) names.push(r.name);
+    if (!byName.hasOwnProperty(r.name)) byName[r.name] = [];
+    byName[r.name].push(r);
+  });
+
+  var els = [];
+  names.forEach(function(ruleName) {
+    els.push(el('a', {name: ruleName}));
+
+    var isFirst = true;
+    byName[ruleName].forEach(function(r) {
+      els.push(renderRule(r, isFirst));
+      isFirst = false;
+    });
+
+    els.push(el('br.split'));
+  });
+  return el('div.list', els);
+}
+
+function heading(fragment, text) {
+  $('ul.toc')[0].appendChild(
+    el('li', el('a', {href: fragment, text: text}))
+  );
+  return el('h2' + fragment, [
+      el('a', {href: fragment, text: text}),
+      el('p', el('a', {href: '#top', text: 'top ↑'})),
+  ]);
+}
+
+var output = document.getElementById('grammar');
+
+document.body.appendChild(heading('#core', 'Core'));
+document.body.appendChild(renderRuleList(Language._coreGrammar.rules));
+
+var blockRules = Language.grammar.copy().rules;
+Language._coreGrammar.rules.forEach(function(r) {
+  var index = blockRules.indexOf(r);
+  blockRules.splice(index, 1);
+});
+
+document.body.appendChild(heading('#blocks', 'Blocks'));
+document.body.appendChild(renderRuleList(blockRules));
+
+var g = Language.grammar;
+
+</script>
+

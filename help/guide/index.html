@@ -1,0 +1,374 @@
+<!doctype html>
+
+<!-- Mirrored from tosh.blob.codes/help/guide/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 03 Mar 2025 19:25:57 GMT -->
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<title>guide :: tosh</title>
+
+<link href="http://fonts.googleapis.com/css?family=Noto+Sans:400,400italic,700|Source+Code+Pro:400,600" rel="stylesheet" type="text/css">
+<link rel=stylesheet href=../../shared.css>
+<link rel=stylesheet href=../../website.css>
+
+<style>
+p {
+  line-height: 1.75em;
+}
+li {
+  line-height: 1.75em;
+  margin: 0 0 0.75em;
+}
+code.blocks {
+  border: none;
+  background: none;
+  margin: 0;
+  padding: 0;
+}
+</style>
+
+<!---------------------------------------------------------------------------->
+
+<body class=guide>
+
+<h1>
+  <a href="../index.html">tosh help <strong>/</strong></a>
+  <strong>guide</strong>
+</h1>
+
+<blockquote>
+<strong>Also read <a href="../tips/index.html">tips on using the editor</a></strong>.
+</blockquote>
+
+<p><a href="http://scratch.mit.edu/">Scratch</a> is a programming language designed for beginners.
+
+<p>Scratch's main appeal is that it's <em>block-based</em>: instead of typing in code, you drag blocks around. Since the block shapes are only allowed to fit together in certain ways, syntax errors are impossible. Overall, the block-based interface makes it beginner-friendly.
+
+<p><strong class=title>tosh</strong> is a <em>text-based</em> Scratch editor: you type in code in a text-based format which it compiles into Scratch projects, thus defeating the whole point of Scratch. <a href="http://blob.codes/scratch-is-cool/">(Why?!)</a>.
+
+
+<ul class=toc>
+  <li><a href="#syntax">The Syntax</a>
+  <li><a href="#reference">Reference</a>
+</ul>
+
+
+<h2 id=syntax><a href="#syntax">The Syntax</a></h2>
+
+<p>The syntax has only a few guiding principles:
+
+<ul>
+  <li><p><b>Type the blocks as you would read them.</b>
+  <li><p><b><a href="#text-inputs">Text inputs</a> need quotes.</b> (Also some menus.)
+  <li><p><b><a href="#precedence">Arithmetic binds tighter than reporters</a></b>.
+  <li><p><b>Reporters <a href="#reporters">sometimes need brackets</a></b> (but not usually).
+  <li><p><b><a href="#control-structures">Blank lines</a> separate scripts.</b>
+  <li><p><b><a href="#custom-blocks">Custom block inputs</a> need brackets.</b>
+</ul>
+
+<p>That's it! And since you already know all the blocks in Scratch, the language should be easy to learn.
+
+<p>If you've used <a href="http://wiki.scratch.mit.edu/wiki/Block_Plugin/Syntax"><strong>scratchblocks</strong> syntax</a> before, be warned: tosh is quite different!
+
+<p>Read on for details…
+
+<h3 id=text-inputs><a href="#text-inputs">Text Inputs</a></h3>
+
+<p>Write text input values inside <b>single or double quotes</b>. (I prefer double quotes, but you can use whichever you like.)
+
+<p>Some menu options must also be written in quotes: <b>broadcasts</b>, <b>costumes</b>, <b>sounds</b>, and <b>sprite names</b>.
+
+<div class=split>
+<pre class=tosh>
+say "Hello world!"
+broadcast "start the game"
+switch costume to "red square"
+play sound "pop"
+point towards "Sprite1"
+</pre>
+<pre class=blocks>
+say [Hello world!]
+broadcast [start the game v]
+switch costume to [red square v]
+play sound [pop v]
+point towards [Sprite1 v]
+</pre>
+</div>
+
+<p>Write all other menu options without quotes. These take only built-in values such as <code>mouse-pointer</code> which <strong class=title>tosh</strong> can recognise.
+
+<div class=split>
+<pre class=tosh>if key space pressed? and sqrt of 9 = 3 then
+  stop other scripts in sprite
+end
+</pre>
+<pre class=blocks>
+if &lt;&lt;key [space v] pressed?&gt; and &lt;([sqrt v] of (9)) = [3]&gt;&gt; then
+  stop [other scripts in sprite v]
+end
+</pre>
+</div>
+
+
+<h3 id=precedence><a href="#precedence">Order of operations</a></h3>
+
+<p>The order of operations tells you which things to perform first. For example, if you saw <code>2 + 3 * 4</code> while doing maths, you'd know to do the multiplication first. If you saw <code>2 + (3 * 4)</code> it would mean the same thing; but the brackets aren't needed. You might have used a mnemonic like "BIDMAS" or "PEMDAS" to remember the order.
+
+<p>In computer languages, we use order of operations to work out where to put the brackets: <strong class=title>tosh</strong> uses it to work out where to put blocks when converting your text into Scratch code. 
+
+<p>You can think order of operations as how "tightly" blocks bind to their arguments. From the example above, we can say that <b><code>*</code> binds tighter than <code>+</code></b>. 
+
+<p>Here's how the rest of the blocks fit in:
+
+<ol>
+  <li><b>Stack blocks</b> like <code class=cm-s-looks>say … for … secs</code> bind the <strong>loosest</strong>.
+  <li><b>Booleans</b> like <code class=cm-s-operators>… and …</code>
+  <li><b>Reporters with inputs</b> like <code class=cm-s-operators>sin of …</code>
+  <li><b>Arithmetic</b> binds tighter than numeric reporters. First we have <code class=cm-s-operators>+</code> and <code class=cm-s-operators>-</code>…
+  <li>…and then we have <code class=cm-s-operators>*</code>, <code class=cm-s-operators>/</code>, and <code class=cm-s-operators>mod</code>
+  <li>Finally, we have <b>reporters with no inputs</b>, like <code class=cm-s-motion>x position</code>, which bind <strong>tightest</strong>.
+</ol>
+
+
+<p>Examples:
+
+<div class=split>
+<pre class=tosh>
+move 2 + 3 * 4 steps
+</pre>
+<pre class=blocks>
+move ((2) + ((3) * (4))) steps
+</pre>
+</div>
+
+<div class=split>
+<pre class=tosh>
+say 10 + sin of 90 + 15
+</pre>
+<pre class=blocks>
+say (((10) + ([sin v] of (90))) + (15))
+</pre>
+</div>
+
+<p>(Look carefully—they might be surprising!)
+
+<p>The rules above mean you can usually omit brackets around reporter blocks. But just like in maths, you can <b>use brackets if you need to</b>.
+
+<ul>
+  <li>Use <code>&lt; &gt;</code> around blocks which report a true or false value.
+  <li>Use <code>( )</code> around all other reporters.
+</ul>
+
+<p>Examples:
+
+<div class=split>
+<pre class=tosh>say 2 + sin of (90 + 15)</pre>
+<pre class=blocks>say ((2) + ([sin v] of ((90) + (15))))</pre>
+</div>
+
+<div class=split>
+<pre class=tosh>
+if &lt;mouse down? and touching "cat"?&gt; or score = 0 then
+  
+end
+</pre>
+<pre class=blocks>
+if &lt;&lt;&lt;mouse down?&gt; and &lt;touching [cat? v]&gt;&gt; or &lt;(score) = [0]&gt;&gt; then
+  
+end
+</pre>
+</div>
+
+
+<h3 id=reporters><a href="#reporters">Reporters</a></h3>
+
+<blockquote>If you have a syntax error, try putting in a bracket just before.</blockquote>
+
+<p>Reporters in <b>text inputs</b> don't need brackets.
+
+<p>Reporters in <b>number inputs</b> only need brackets if you want to change the <a href="#precedence">order of operations</a>.
+
+<p>But to put a reporter into a <b>menu input</b>, you need to write brackets around it.
+
+<div class=split>
+<pre class=tosh>
+say x position for timer secs
+broadcast (join "message-" (score))
+switch costume to (timer / 25)
+play sound (item score of groceries)
+point towards (join "sprite-" (score))
+</pre>
+<pre class=blocks>
+say (x position) for (timer) secs
+broadcast (join [message-] (score))
+switch costume to ((timer) / (25))
+play sound (item (score) of [groceries v])
+point towards (join [sprite-] (score))
+</pre>
+</div>
+
+<p>The <strong><code class=cm-s-operators>join</code> block</strong> is special: reporters in its inputs always need brackets.
+
+<div class=split>
+<pre class=tosh>
+say join "Hello " "world!"
+say join "I'm at: " (x position)
+say join join (x position) ", " (y position)
+</pre>
+<pre class=blocks>
+say (join [Hello ] [world!]
+say (join [I'm at: ] (x position))
+say (join (join (x position) [, ]) (y position))
+</pre>
+</div>
+
+<p><strong>List reporters</strong> always need brackets. (Variables don't.)
+
+<div class=split>
+<pre class=tosh>
+say score for 1 secs
+say (groceries)
+</pre>
+<pre class=blocks>
+say (score) for [1] secs
+say (groceries :: list)
+</pre>
+</div>
+
+
+
+<h3 id=control-structures><a href="#control-structures">Control structures</a></h3>
+
+<p>Separate scripts with one or more <b>blank lines</b>.
+
+<p>The editor will automatically <b>indent</b> the blocks inside a c-block like <code class=cm-s-control>repeat <span class=cm-s-number>10</span></code> using one extra tab at the start of each line.
+
+<p>Write <code class=cm-s-control>end</code> to indicate where a c-block ends.
+
+<p>As you'd expect, <strong class=title>tosh</strong> is sensible and won't let you place any blocks after a <b>cap block</b> such as <code class=cm-s-control>stop all</code>. Similarly, you cannot put blocks directly above a <strong>hat block</strong> such as <code class=cm-s-events>when</code> or <code class=cm-s-custom>define</code> hat.
+
+
+<h3 id=custom-blocks><a href="#custom-blocks">Custom blocks</a></h3>
+
+<p>Define custom blocks using the <code class=cm-s-custom>define</code> keyword:
+
+<div class=split>
+<pre class=tosh>
+define jump (height) [message] grounded: &lt;grounded?&gt;
+repeat height
+  change y by 4
+end
+</pre>
+<pre class=blocks>
+define jump (height) [message] grounded: &lt;grounded?&gt;
+repeat (height)
+  change y by (4)
+end
+</pre>
+</div>
+
+<p>Write input names in brackets. Use different brackets depending on which shape of input you want:
+
+<ul>
+  <li>Write number input names in round brackets: <code class=cm-s-parameter>(height)</code>
+  <li>Write text input names in square brackets: <code class=cm-s-parameter>[message]</code>
+  <li>Write boolean input names in angle brackets: <code class=cm-s-parameter>&lt;grounded?&gt;</code>
+</ul>
+
+<p>You use a custom block the same way as any built-in stack block. (Except that you have to write brackets around any reporters in the custom block's inputs.)
+
+<div class=split>
+<pre class="tosh">
+jump 42 "Hello world!" grounded: &lt;0 = 1&gt;
+jump (10 * score) (answer) grounded: &lt;mouse down?&gt;
+</pre>
+<pre class=blocks>
+jump (42) [Hello world!] grounded: &lt;[0] = [1]&gt; :: custom
+jump ((10) * (score)) (answer) grounded: &lt;mouse down?&gt; :: custom
+</pre>
+</div>
+
+
+<h3 id=get-started><a href="#get-started">Get started</a></h3>
+
+<p>The above is all you need to know to <strong><a href="../../app/index.html">start using <span class=title>tosh</span></a></strong>!
+
+
+<h2 id=reference><a href="#reference">Reference</a></h2>
+
+<p>You might find these useful while coding:
+
+<ul>
+  <li><strong><a href="../blocks/index.html">List of Blocks</a></strong>: You should be familiar with the all the blocks from Scratch, but here's a complete list with examples just in case.
+  <li><strong><a href="../grammar/index.html">Grammar</a></strong>: The full grammar of <strong class=title>tosh</strong> in BNF syntax, if you're into that sort of thing.
+</ul>
+
+<p>The <a href="../tips/index.html">tips for using the editor</a> may also be helpful.
+
+
+<h2 id=credits><a href="#credits">Credits</a></h2>
+
+<p>Many thanks to the following:
+
+<ul>
+  <li><strong>Dan</strong> gave much useful advice on many occasions. His beard is wise.
+  <li><strong><a href="http://github.com/trumank">Truman</a></strong> found lots of bugs in his first five minutes.
+  <li><strong><a href="http://github.com/nathan">Nathan</a></strong> wrote the <a href="http://phosphorus.github.io/">Phosphorus</a> project player, and <a href="https://blob.codes/parsing-is-hard/#new-syntax">inspired</a> the parentheses-light syntax.
+  <li><strong><a href="http://twitter.com/technoboyIO">Connor</a></strong> helped find bugs and fix the design.
+  <li><strong>Benjamin</strong> approved my font choices and read drafts of the guide.
+  <li><strong>Anna</strong> is the loveliest supportive person ever.
+</ul>
+
+Thanks to my beta testers:
+
+<ul>
+  <li><strong><a href="http://scratch.mit.edu/users/technoboy10/">technoboy10</a></strong></li>
+  <li><strong><a href="http://scratch.mit.edu/users/MathWizz/">MathWizz</a></strong></li>
+  <li><strong><a href="http://scratch.mit.edu/users/BookOwl/">BookOwl</a></strong></li>
+  <li><strong><a href="http://scratch.mit.edu/users/liam48D/">liam48D</a></strong></li>
+  <li><strong><a href="http://scratch.mit.edu/users/Ethan_1/">Ethan_1</a></strong></li>
+  <li><strong><a href="http://scratch.mit.edu/users/nathanprocks/">nathanprocks</a></strong></li>
+  <li><strong><a href="http://scratch.mit.edu/users/Icely/">Icely</a></strong></li>
+</ul>
+
+<p><strong>Scratch</strong> is developed by the Lifelong Kindergarten group at the MIT Media Lab.
+
+<p>Shut up, Dan.
+
+<hr>
+
+<p>;
+
+
+<!---------------------------------------------------------------------------->
+
+<script src=../scratchblocks-5a7d184-min.js></script>
+<script>
+scratchblocks.renderMatching("pre.blocks");
+scratchblocks.renderMatching("code.blocks", { inline: true });
+</script>
+
+<script src=../../util.js></script>
+<script src=../../../cdnjs.cloudflare.com/ajax/libs/jszip/2.4.0/jszip.min.js></script>
+<script src=../../app/tosh-min.js></script>
+
+<script>
+
+$('pre.tosh').forEach(function(pre) {
+  if (pre.classList.contains('nohl')) return;
+  var text = pre.textContent;
+  pre.innerHTML = '';
+
+  CodeMirror.runMode(text, {
+    name: "tosh",
+    variables: [
+      { _name: ko("score"), },
+    ],
+    lists: [
+      { _name: ko("groceries"), },
+    ],
+    definitions: [{"info":{"shape":"hat","selector":"procDef"},"args":["jump %n %s grounded: %b",["height","message","grounded ?"],[0,"",false],false],"_parts":["jump",{"arg":"n","name":"height"},{"arg":"s","name":"message"},"grounded:",{"arg":"b","name":"grounded ?"}]}],
+  }, pre);
+});
+
+</script>
+

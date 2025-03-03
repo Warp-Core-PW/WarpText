@@ -1,0 +1,355 @@
+<!doctype html>
+
+<!-- Mirrored from tosh.blob.codes/help/blocks/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 03 Mar 2025 19:26:04 GMT -->
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<title>blocks :: tosh</title>
+
+<link href="http://fonts.googleapis.com/css?family=Noto+Sans:400,700|Source+Code+Pro:400,600" rel="stylesheet" type="text/css">
+<link rel=stylesheet href=../../shared.css>
+<link rel=stylesheet href=../../website.css>
+
+<!---------------------------------------------------------------------------->
+
+<body class=guide>
+
+<h1>
+  <a href="../index.html">tosh help <strong>/</strong></a>
+  <strong>blocks</strong>
+</h1>
+
+<p>You should be familiar with the all the blocks from Scratch, but here's a complete list of examples just in case. Have a look at <a href="../guide/index.html">the full guide</a> for more about syntax.</p>
+
+<p>If a block has lots of menu options, more than one example may be given.
+
+<ul class=palette id=toc>
+  <ul>
+    <li><a class="cm-s-motion" href="#motion">Motion</a>
+    <li><a class="cm-s-looks" href="#looks">Looks</a>
+    <li><a class="cm-s-sound" href="#sound">Sound</a>
+    <li><a class="cm-s-pen" href="#pen">Pen</a>
+    <li><a class="cm-s-variable" href="#data">Data</a>
+  </ul>
+  <ul>
+    <li><a class="cm-s-events" href="#events">Events</a>
+    <li><a class="cm-s-control" href="#control">Control</a>
+    <li><a class="cm-s-sensing" href="#sensing">Sensing</a>
+    <li><a class="cm-s-operators" href="#operators">Operators</a>
+    <li><a class="cm-s-custom" href="#more-blocks">More Blocks</a>
+  </ul>
+</ul>
+
+<h2 id=motion><a href="#motion" class=cm-s-motion>Motion</a>
+  <p><a href="#toc">top ↑</a>
+</h2>
+
+<pre class="list cm-s-motion">
+move <span class=cm-s-number>10</span> steps
+turn cw <span class=cm-s-number>15</span> degrees
+turn ccw <span class=cm-s-number>15</span> degrees
+
+point in direction <span class=cm-s-number>90</span>
+point towards mouse-pointer
+point towards <span class=cm-s-string>"Sprite1"</span>
+
+go to x: <span class=cm-s-number>0</span> y: <span class=cm-s-number>0</span>
+go to mouse-pointer
+glide <span class=cm-s-number>1</span> secs to x: <span class=cm-s-number>0</span> y: <span class=cm-s-number>0</span>
+
+change x by <span class=cm-s-number>10</span>
+set x to <span class=cm-s-number>0</span>
+change y by <span class=cm-s-number>10</span>
+set y to <span class=cm-s-number>0</span>
+
+if on edge, bounce
+
+set rotation style left-right
+set rotation style don't rotate
+set rotation style all around
+
+  (x position)
+  (y position)
+  (direction)
+</pre>
+
+<h2 id=looks><a href="#looks" class=cm-s-looks>Looks</a>
+  <p><a href="#toc">top ↑</a>
+</h2>
+
+<pre class="list cm-s-looks">
+say <span class=cm-s-string>"Hello!"</span> for <span class=cm-s-number>2</span> secs
+say <span class=cm-s-string>"Hello!"</span>
+think <span class=cm-s-string>"Hmm<span class=cm-s-grey>...</span>"</span> for <span class=cm-s-number>2</span> secs
+think <span class=cm-s-string>"Hmm<span class=cm-s-grey>...</span>"</span>
+
+show
+hide
+
+switch costume to <span class=cm-s-string>"costume2"</span>
+next costume
+switch backdrop to <span class=cm-s-string>"backdrop1"</span>
+switch backdrop to <span class=cm-s-string>"backdrop1"</span> and wait         <span class=cm-s-comment>// [Stage only]</span>
+next backdrop                                   <span class=cm-s-comment>// [Stage only]</span>
+
+change color effect by <span class=cm-s-number>25</span>
+set color effect to <span class=cm-s-number>0</span>
+clear graphic effects
+
+change size by <span class=cm-s-number>10</span>
+set size to <span class=cm-s-number>100</span>%
+
+go to front
+go back <span class=cm-s-number>1</span> layers
+
+  (costume #)
+  (backdrop name)
+  (size)
+  (backdrop #)                                    <span class=cm-s-comment>// [Stage only]</span>
+</pre>
+
+<h2 id=sound><a href="#sound" class=cm-s-sound>Sound</a>
+  <p><a href="#toc">top ↑</a>
+</h2>
+
+<pre class="list cm-s-sound">
+play sound <span class=cm-s-string>"pop"</span>
+play sound <span class=cm-s-string>"pop"</span> until done
+stop all sounds
+
+play drum <span class=cm-s-number>1</span> for <span class=cm-s-number>0.2</span> beats
+rest for <span class=cm-s-number>0.2</span> beats
+
+play note <span class=cm-s-number>60</span> for <span class=cm-s-number>0.5</span> beats
+set instrument to <span class=cm-s-number>1</span>
+
+change volume by <span class=cm-s-number>10</span>
+set volume to <span class=cm-s-number>100</span>%
+  (volume)
+
+change tempo by <span class=cm-s-number>20</span>
+set tempo to <span class=cm-s-number>60</span> bpm
+  (tempo)
+</pre>
+
+<h2 id=pen><a href="#pen" class=cm-s-pen>Pen</a>
+  <p><a href="#toc">top ↑</a>
+</h2>
+
+<pre class="list cm-s-pen">
+clear
+
+stamp
+
+pen down
+pen up
+
+set pen color to <span style="color: #ff00ff;">#ff00ff</span>
+change pen color by <span class=cm-s-number>10</span>
+set pen color to <span class=cm-s-number>0</span>
+
+change pen shade by <span class=cm-s-number>10</span>
+set pen shade to <span class=cm-s-number>50</span>
+
+change pen size by <span class=cm-s-number>1</span>
+set pen size to <span class=cm-s-number>1</span>
+</pre>
+
+<h2 id=data><a href="#data" class=cm-s-variable>Data</a>
+  <p><a href="#toc">top ↑</a>
+</h2>
+
+<pre class="list cm-s-variable">
+set score to <span class=cm-s-string>"0"</span>
+change score by <span class=cm-s-number>1</span>
+show variable score
+hide variable score
+
+  (score)
+</pre>
+
+<pre class="list cm-s-list">
+add <span class=cm-s-string>"thing"</span> to groceries
+delete <span class=cm-s-number>1</span> of groceries
+insert <span class=cm-s-string>"thing"</span> at <span class=cm-s-number>1</span> of groceries
+replace item <span class=cm-s-number>1</span> of groceries with <span class=cm-s-string>"thing"</span>
+
+  (item <span class=cm-s-number>1</span> of groceries)
+  (length of groceries)
+  &lt;groceries contains <span class=cm-s-string>"thing"</span>?&gt;
+
+show list groceries
+hide list groceries
+
+  (groceries)
+</pre>
+
+<h2 id=events><a href="#events" class=cm-s-events>Events</a>
+  <p><a href="#toc">top ↑</a>
+</h2>
+
+<pre class="list cm-s-events">
+when <span class=cm-s-green>flag</span> clicked
+when space key pressed
+when this sprite clicked
+when backdrop switches to <span class=cm-s-string>"backdrop1"</span>
+
+when loudness &gt; <span class=cm-s-number>10</span>
+
+when I receive <span class=cm-s-string>"message1"</span>
+broadcast <span class=cm-s-string>"message1"</span>
+broadcast <span class=cm-s-string>"message1"</span> and wait
+</pre>
+
+<h2 id=control><a href="#control" class=cm-s-control>Control</a>
+  <p><a href="#toc">top ↑</a>
+</h2>
+
+<pre class="list cm-s-control">
+wait <span class=cm-s-number>1</span> secs
+
+repeat <span class=cm-s-number>10</span>
+	<span class=cm-s-grey>...</span>
+end
+
+forever
+	<span class=cm-s-grey>...</span>
+end
+
+if <span class=cm-s-false>&lt;&gt;</span> then
+	<span class=cm-s-grey>...</span>
+end
+
+if <span class=cm-s-false>&lt;&gt;</span> then
+	<span class=cm-s-grey>...</span>
+else
+	<span class=cm-s-grey>...</span>
+end
+
+wait until <span class=cm-s-false>&lt;&gt;</span>
+
+repeat until <span class=cm-s-false>&lt;&gt;</span>
+	<span class=cm-s-grey>...</span>
+end
+
+stop all
+stop this script
+stop other scripts in sprite
+stop other scripts in stage						<span class=cm-s-comment>// [Stage only]</span>
+
+when I start as a clone
+create clone of myself
+create clone of <span class=cm-s-string>"Sprite1"</span>
+delete this clone
+</pre>
+
+<h2 id=sensing><a href="#sensing" class=cm-s-sensing>Sensing</a>
+  <p><a href="#toc">top ↑</a>
+</h2>
+
+<pre class="list cm-s-sensing">
+  &lt;touching mouse-pointer?&gt;
+  &lt;touching edge?&gt;
+  &lt;touching <span class=cm-s-string>"Sprite1"</span>?&gt;
+  &lt;touching color <span style="color: #ff00ff;">#ff00ff</span>?&gt;
+  &lt;color <span style="color: #ff00ff;">#ff00ff</span> is touching <span style="color: #00ff00;">#00ff00</span>?&gt;
+  (distance to mouse-pointer)
+  (distance to <span class=cm-s-string>"Sprite1"</span>)
+
+ask <span class=cm-s-string>"What's your name?"</span> and wait
+  (answer)
+
+  &lt;key space pressed?&gt;
+  &lt;mouse down?&gt;
+  (mouse x)
+  (mouse y)
+
+  (loudness)
+
+  (video motion on Stage)
+  (video direction on this sprite)
+turn video off
+turn video on
+turn video on-flipped
+set video transparency to <span class=cm-s-number>50</span>%
+
+  (timer)
+reset timer
+
+  (x position of <span class=cm-s-string>"Sprite2"</span>)
+  (y position of <span class=cm-s-string>"Sprite2"</span>)
+  (direction of <span class=cm-s-string>"Sprite2"</span>)
+  (costume # of <span class=cm-s-string>"Sprite2"</span>)
+  (costume name of <span class=cm-s-string>"Sprite2"</span>)
+  (size of <span class=cm-s-string>"Sprite2"</span>)
+  (volume of <span class=cm-s-string>"Sprite2"</span>)
+  (backdrop # of Stage)
+  (backdrop name of Stage)
+  (volume of Stage)
+
+  (current year)
+  (current month)
+  (current date)
+  (current day of week)
+  (current hour)
+  (current minute)
+  (current second)
+  (days since <span class=cm-s-number>2000</span>)
+  (username)
+</pre>
+
+<h2 id=operators><a href="#operators" class=cm-s-operators>Operators</a>
+  <p><a href="#toc">top ↑</a>
+</h2>
+
+<pre class="list cm-s-operators">
+  (<span class=cm-s-number>2</span> + <span class=cm-s-number>2</span>)
+  (<span class=cm-s-number>2</span> - <span class=cm-s-number>2</span>)
+  (<span class=cm-s-number>2</span> * <span class=cm-s-number>2</span>)
+  (<span class=cm-s-number>2</span> / <span class=cm-s-number>2</span>)
+
+  (pick random <span class=cm-s-number>1</span> to <span class=cm-s-number>10</span>)
+
+  &lt;<span class=cm-s-empty>_</span> &lt; <span class=cm-s-empty>_</span>&gt;
+  &lt;<span class=cm-s-empty>_</span> = <span class=cm-s-empty>_</span>&gt;
+  &lt;<span class=cm-s-empty>_</span> &gt; <span class=cm-s-empty>_</span>&gt;
+
+  &lt;<span class=cm-s-false>&lt;&gt;</span> and <span class=cm-s-false>&lt;&gt;</span>&gt;
+  &lt;<span class=cm-s-false>&lt;&gt;</span> or <span class=cm-s-false>&lt;&gt;</span>&gt;
+  &lt;not <span class=cm-s-false>&lt;&gt;</span>&gt;
+
+  (join <span class=cm-s-string>"hello "</span> <span class=cm-s-string>"world"</span>)
+  (join <span class=cm-s-motion>(x position)</span> <span class=cm-s-motion>(y position)</span>)
+  (letter <span class=cm-s-number>1</span> of <span class=cm-s-string>"world"</span>)
+  (length of <span class=cm-s-string>"world"</span>)
+
+  (<span class=cm-s-number>10</span> mod <span class=cm-s-number>3</span>)
+  (round <span class=cm-s-number>3.14</span>)
+
+  (sqrt of <span class=cm-s-number>9</span>)
+  (abs of <span class=cm-s-number>9</span>)
+  (floor of <span class=cm-s-number>9</span>)
+  (ceiling of <span class=cm-s-number>9</span>)
+  (sin of <span class=cm-s-number>9</span>)
+  (cos of <span class=cm-s-number>9</span>)
+  (tan of <span class=cm-s-number>9</span>)
+  (asin of <span class=cm-s-number>9</span>)
+  (acos of <span class=cm-s-number>9</span>)
+  (atan of <span class=cm-s-number>9</span>)
+  (ln of <span class=cm-s-number>9</span>)
+  (log of <span class=cm-s-number>9</span>)
+  (e ^ of <span class=cm-s-number>9</span>)
+  (10 ^ of <span class=cm-s-number>9</span>)
+</pre>
+
+<h2 id=more-blocks><a href="#more-blocks" class=cm-s-custom>Custom</a>
+  <p><a href="#toc">top ↑</a>
+</h2>
+
+<pre class="list cm-s-custom">
+define dance (number) [string] &lt;boolean&gt;
+<span class=cm-s-grey>...</span>
+
+dance <span class=cm-s-number>42</span> <span class=cm-s-string>"Hello world!"</span> <span class=cm-s-number>0</span><span class=cm-s-operators>=</span><span class=cm-s-number>1</span>
+</pre>
+

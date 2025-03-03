@@ -1,0 +1,57 @@
+<!doctype html>
+
+
+<meta charset=utf-8>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+<meta name=apple-mobile-web-app-capable content=yes>
+
+<title>WarpText</title>
+
+<link rel="shortcut icon" href=../favicon.png>
+
+<link href="http://fonts.googleapis.com/css?family=Noto+Sans:400,700|Source+Code+Pro:400,600" rel="stylesheet" type="text/css">
+<link rel=stylesheet href=tosh-min.css>
+
+<!---------------------------------------------------------------------------->
+
+<body class="wrap app">
+
+<div id="menu">
+  <a class=logo href="../index.html">WarpText</a><span class=menu-button id=button-load>Open</span><span class=menu-button id=button-save>Save</span>
+  <a class="menu-button right" href="../help/index.html" target="_blank">Help</a>
+</div>
+
+<div id="wrap" class="has-menu">
+  <div id="phosphorus">
+    <div class=controls>
+      <div class=progress-bar></div>
+      <span class=stop></span>
+      <span class=pause></span>
+      <span class=flag title="Shift+click to enable turbo mode."></span>
+      <div class=turbo>Turbo Mode</div>
+      <span class=small-stage></span>
+      <span class=full-screen></span>
+    </div>
+    <div class=player></div>
+  </div>
+
+  <div id="switcher"></div>
+
+  <noscript>
+    <p class=big>Whoops, you disabled Javascript.
+  </noscript>
+</div>
+
+<!---------------------------------------------------------------------------->
+
+<script src=../../phosphorus.github.io/fonts.js></script>
+<script src=../../cdnjs.cloudflare.com/ajax/libs/jszip/2.4.0/jszip.min.js></script>
+<script src=../../phosphorus.github.io/lib/rgbcolor.js></script>
+<script src=../../phosphorus.github.io/lib/StackBlur.js></script>
+<script src=../../phosphorus.github.io/lib/canvg.js></script>
+<script src=../../phosphorus.github.io/phosphorus.js></script>
+
+<script src=filesaver/FileSaver.min.js></script>
+
+<script src=tosh-min72aa.js?b=20170910></script>
+

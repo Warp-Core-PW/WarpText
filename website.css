@@ -1,0 +1,309 @@
+* {
+  box-sizing: border-box;
+}
+
+body, div, p, textarea, input {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Noto Sans, sans-serif;
+  font-size: 1.1em;
+  padding: 1rem;
+  max-width: 48rem;
+  margin: 0 auto;
+  line-height: 1.5em;
+}
+body.mac {
+  background: #ececec;
+}
+
+body.guide {
+  width: 100%;
+}
+
+@media screen and (max-width: 40em) {
+  .guide {
+    font-size: 0.8181em;
+  }
+}
+
+a {
+  color: black;
+  text-decoration: none;
+  background: #fffeef;
+}
+a:hover {
+  border-bottom: 0.1em solid;
+  cursor: pointer;
+  background: #fffed0
+}
+a:active {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+a.img {
+  background: none;
+  border-bottom: none;
+}
+
+#screenshot {
+  max-height: 18em;
+}
+
+p {
+  margin: 0 0 1.5rem;
+}
+
+img {
+  max-width: 100%;
+}
+
+h1, h2 {
+  font-family: Source Code Pro, monospace;
+  letter-spacing: -1px;
+}
+h1 {
+  font-weight: 400;
+  font-size: 2em;
+}
+
+h1 span {
+  font-size: 1rem;
+  letter-spacing: 0;
+}
+
+h1 span a {
+  margin-left: 0.5em;
+}
+
+h2 {
+  font-size: 1.75em;
+  margin: 0;
+  padding: 1rem 0; /* 3.5em */
+  font-weight: 600;
+}
+
+h3 {
+  padding: 1.4em 0 1.4em; /* 3.5em 1.75em */
+  margin: 1.4em 0 0;
+  border-top: 3px solid #ddd;
+  font-size: 1.25em;
+  font-weight: 700;
+}
+
+h2 a, h3 a {
+  background: none;
+}
+
+p.subtitle {
+  font-size: 1.325em;
+  line-height: 1.509em; /* 2em */
+}
+
+p.big {
+  font-size: 1.5em;
+  line-height: 2em; /* 3em */
+  text-align: center;
+  margin: 3rem 0;
+  font-family: Source Code Pro, monospace;
+}
+
+
+
+/* /guide */
+
+h2:target::before, h3:target::before {
+  content: ">";
+  position: absolute;
+  left: -0.75em;
+  background: #fffeef;
+  color: rgba(0,0,0,0.5);
+}
+
+strong.title, code.mono {
+  font-family: Source Code Pro, monospace;
+  font-weight: 400;
+  letter-spacing: -0.025em;
+}
+
+pre, code {
+  font: inherit;
+}
+pre {
+  white-space: pre-wrap;
+  margin-bottom: 24px;
+  overflow: hidden;
+  padding: 1rem;
+  border-radius: 0.5em;
+  border: 2px solid #ddd;
+  background-color: #f8f8f8;
+  line-height: 1.5em;
+  font-size: 0.9em;
+}
+code {
+  white-space: nowrap;
+  font-size: 0.9em;
+  padding: 2px;
+  border-radius: 0.325em;
+  border: 1px solid #ddd;
+  background-color: #f8f8f8;
+}
+pre code {
+  white-space: pre-wrap;
+  border: none;
+  padding: 0;
+  background-color: transparent;
+  border-radius: 0;
+}
+blockquote {
+  margin-left: 0;
+  margin-right: 0;
+  width: 96%;
+  padding: 0 0.75em;
+  border-left: 0.25em solid rgba(0, 0, 0, 0.75);
+  color: rgba(0, 0, 0, 0.75);
+}
+hr {
+  margin: 4em 0 2em;
+  border: 0;
+  height: 0.125em;
+  background: #ccc;
+}
+
+
+kbd {
+  font-size: 1em;
+  padding: 0.1em 0.2em;
+  background: #F6F6EF;
+  border-radius: 0.2em;
+  border-bottom: 2px solid #E4E4D7;
+  font-family: Source Code Pro, monospace;
+}
+
+pre.blocks {
+  background: none;
+  color: none;
+  border: none;
+}
+
+.split pre {
+  margin: 0;
+}
+.split {
+  margin: 1em 0;
+}
+
+
+ul li {
+  margin: 0 0 0.5rem;
+}
+
+.footnotes {
+  font-size: 0.8em;
+}
+h2 a.p, h3 a.p {
+  display: none;
+  font-weight: 400;
+  font-family: Noto Sans, sans-serif;
+  line-height: 1em;
+}
+h2:hover a.p, h3:hover a.p {
+  display: inline;
+}
+
+.toc, .palette {
+  font-size: 1.25em;
+  font-family: Source Code Pro, monospace;
+}
+.palette {
+  margin: 0;
+  padding: 1.5rem 0;
+  /* TODO moz */
+  max-width: 24em;
+}
+.palette ul {
+  list-style-type: disc;
+  float: left;
+  width: 50%;
+}
+.palette::after {
+  clear: both;
+  content: "";
+  display: block;
+}
+.palette:target {
+  border: 3px solid #ddd;
+  border-radius: 0.5em;
+  margin: -3px;
+}
+
+h2, h3 {
+  position: relative;
+}
+h2 p {
+  font-size: 1rem;
+  position: absolute;
+  top: 1rem;
+  right: 0;
+}
+
+@media screen and (min-width: 70em) {
+  h2 {
+    position: relative;
+    width: 12rem;
+    top: 2.75rem;
+    left: -14rem;
+    text-align: right;
+    line-height: 2rem;
+  }
+  h2 a.p {
+    position: absolute;
+    top: 0.625em;
+    left: 0;
+  }
+  h2:hover a.p {
+    display: inline-block;
+  }
+
+  pre.list {
+    margin-top: -1rem;
+  }
+  h2 p {
+    position: absolute;
+    top: 3rem;
+    right: 0;
+  }
+
+  hr {
+      margin-left: -11em;
+      margin-top: 6em;
+  }
+
+  .split {
+    /*max-width: 52em;*/
+    margin: 1em -8em;
+  }
+  .split pre {
+    width: 50%;
+    float: left;
+    box-sizing: border-box;
+  }
+  .split pre.blocks {
+    float: none;
+    margin-left: 50%;
+    margin-right: 0;
+    padding: 0.625em 2em;
+  }
+  .sb2 {
+    margin-top: 0 !important;
+  }
+  .split:after {
+    content: "";
+    clear: both;
+    display: block;
+  }
+
+}
+
